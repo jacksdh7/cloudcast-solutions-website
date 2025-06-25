@@ -2,7 +2,7 @@ const content = {
     name: "Jackson Hayward",
     tagline: "App Architecture | Cyber Security | MVP | Technical Advisor",
     portraitAlt: "Portrait",
-    portraitSrc: "/headshot.jpg",
+    portraitSrc: "public/headshot.jpg",
     tabs: [
         { label: "About", value: "about" },
         { label: "Offerings", value: "offerings" },
