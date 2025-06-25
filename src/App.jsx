@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
+import content from './content';
 
 function Tab({ label, value, selectedTab, onClick }) {
   return (
     <button
-      className={`px-4 py-2 border-b-2 ${selectedTab === value ? 'border-blue-600 font-bold' : 'border-transparent'
-        }`}
+      className={`px-4 py-2 border-b-2 ${selectedTab === value ? 'border-blue-600 font-bold' : 'border-transparent'}`}
       onClick={() => onClick(value)}
     >
       {label}
@@ -43,8 +43,8 @@ function App() {
             marginBottom: '1.5rem'
           }}>
             <img
-              src="/headshot.jpg"
-              alt="Portrait"
+              src={content.portraitSrc}
+              alt={content.portraitAlt}
               style={{
                 width: '360px',
                 height: '360px',
@@ -55,8 +55,8 @@ function App() {
               }}
             />
           </div>
-          <h1 style={{ fontSize: '2.5rem', fontWeight: 'bold', textAlign: 'center' }}>Jackson Hayward</h1>
-          <p style={{ fontSize: '1.2rem', color: '#555', textAlign: 'center' }}>App Architecture | Cyber Security | MVP | Technical Advisor </p>
+          <h1 style={{ fontSize: '2.5rem', fontWeight: 'bold', textAlign: 'center' }}>{content.name}</h1>
+          <p style={{ fontSize: '1.2rem', color: '#555', textAlign: 'center' }}>{content.tagline}</p>
         </header>
 
         <nav style={{
@@ -64,81 +64,76 @@ function App() {
           justifyContent: 'space-around',
           borderBottom: '1px solid #ccc',
           marginBottom: '1rem',
-          paddingBottom: '0.5rem' // Add space between tabs and border
+          paddingBottom: '0.5rem'
         }}>
-          <Tab label="About" value="about" selectedTab={tab} onClick={setTab} />
-          <Tab label="Offerings" value="offerings" selectedTab={tab} onClick={setTab} />
-          <Tab label="Education" value="education" selectedTab={tab} onClick={setTab} />
-          <Tab label="Employment" value="employment" selectedTab={tab} onClick={setTab} />
-          <Tab label="Projects" value="projects" selectedTab={tab} onClick={setTab} />
-          <Tab label="Contact" value="contact" selectedTab={tab} onClick={setTab} />
+          {content.tabs.map(tabObj => (
+            <Tab
+              key={tabObj.value}
+              label={tabObj.label}
+              value={tabObj.value}
+              selectedTab={tab}
+              onClick={setTab}
+            />
+          ))}
         </nav>
 
-        <main>
+        <main style={{ marginTop: '1rem' }}>
           {tab === 'about' && (
-            <Section title="About Me">
-              <p>
-                I'm a seasoned consultant with decades of experience in software development, strategy, and cross-industry
-                problem solving. Now retired from full-time work, I help individuals and organizations navigate technical
-                and operational challenges through teaching, advising, and mentoring.
-              </p>
+            <Section title={content.about.title}>
+              <p>{content.about.text}</p>
             </Section>
           )}
 
           {tab === 'offerings' && (
-            <Section title="Consulting Offerings">
+            <Section title={content.offerings.title}>
               <ul>
-                <li>Technical and architectural advising</li>
-                <li>Mentorship for junior and mid-level engineers</li>
-                <li>Technology due diligence for startups and investors</li>
-                <li>Codebase and infrastructure audits</li>
-                <li>Strategy and roadmap planning support</li>
+                {content.offerings.items.map((item, i) => <li key={i}>{item}</li>)}
               </ul>
             </Section>
           )}
 
           {tab === 'education' && (
-            <Section title="Education">
+            <Section title={content.education.title}>
               <p>
-                B.S. in Computer Engineering — Your University Name<br />
-                M.S. in Software Systems — Your Graduate School Name
+                {content.education.text.split('\n').map((line, i) => (
+                  <React.Fragment key={i}>
+                    {line}
+                    <br />
+                  </React.Fragment>
+                ))}
               </p>
             </Section>
           )}
 
           {tab === 'employment' && (
-            <Section title="Previous Employment">
-              <div>
-                <strong>Senior Software Engineer — MajorTech Corp</strong>
-                <p style={{ fontSize: '0.9rem', color: '#666' }}>2010–2023</p>
-                <p>Led development of large-scale distributed systems across multiple domains.</p>
-              </div>
-              <div style={{ marginTop: '1rem' }}>
-                <strong>Principal Consultant — Freelance</strong>
-                <p style={{ fontSize: '0.9rem', color: '#666' }}>2003–2010</p>
-                <p>Worked with clients across industries to implement mission-critical solutions.</p>
-              </div>
+            <Section title={content.employment.title}>
+              {content.employment.jobs.map((job, i) => (
+                <div key={i} style={{ marginTop: i === 0 ? 0 : '1rem' }}>
+                  <strong>{job.title}</strong>
+                  <p style={{ fontSize: '0.9rem', color: '#666' }}>{job.years}</p>
+                  <p>{job.desc}</p>
+                </div>
+              ))}
             </Section>
           )}
 
           {tab === 'projects' && (
-            <Section title="Selected Projects">
-              <div>
-                <strong>Legacy System Modernization</strong>
-                <p>Modernized a decades-old codebase for a financial client, cutting maintenance costs by 50%.</p>
-              </div>
-              <div style={{ marginTop: '1rem' }}>
-                <strong>Startup Tech Due Diligence</strong>
-                <p>Performed code audits and scalability assessments for VC-backed startups.</p>
-              </div>
+            <Section title={content.projects.title}>
+              {content.projects.projects.map((proj, i) => (
+                <div key={i} style={{ marginTop: i === 0 ? 0 : '1rem' }}>
+                  <strong>{proj.title}</strong>
+                  <p>{proj.desc}</p>
+                </div>
+              ))}
             </Section>
           )}
 
           {tab === 'contact' && (
-            <Section title="Contact">
+            <Section title={content.contact.title}>
               <p>
-                Feel free to reach out for consulting, mentoring, or collaboration opportunities.<br />
-                <strong>Email:</strong> <a href="mailto:your.email@example.com">your.email@example.com</a>
+                {content.contact.text}
+                <br />
+                <strong>Email:</strong> <a href={`mailto:${content.contact.email}`}>{content.contact.email}</a>
               </p>
             </Section>
           )}
