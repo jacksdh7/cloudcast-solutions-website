@@ -14,15 +14,24 @@ function Tab({ label, value, selectedTab, onClick }) {
 
 function Section({ title, children }) {
   return (
-    <div style={{ padding: '1rem' }}>
-      <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>{title}</h2>
+    <div>
+      <h2
+        style={{
+          fontSize: '1.5rem',
+          fontWeight: 'bold',
+          marginBottom: '0.5rem',
+          textAlign: 'center'
+        }}
+      >
+        {title}
+      </h2>
       {children}
     </div>
   );
 }
 
 function App() {
-  const [tab, setTab] = useState('about');
+  const [tab, setTab] = useState('home');
 
   return (
     <div
@@ -78,42 +87,22 @@ function App() {
         </nav>
 
         <main style={{ marginTop: '1rem' }}>
-          {tab === 'about' && (
-            <Section title={content.about.title}>
-              <p>{content.about.text}</p>
-            </Section>
-          )}
-
-          {tab === 'offerings' && (
-            <Section title={content.offerings.title}>
-              <ul>
-                {content.offerings.items.map((item, i) => <li key={i}>{item}</li>)}
-              </ul>
-            </Section>
-          )}
-
-          {tab === 'education' && (
-            <Section title={content.education.title}>
+          {tab === 'home' && (
+            <Section title={content.home.title}>
+              <p>{content.home.text1}</p>
+              <p>{content.home.text2}</p>
               <p>
-                {content.education.text.split('\n').map((line, i) => (
-                  <React.Fragment key={i}>
-                    {line}
-                    <br />
-                  </React.Fragment>
-                ))}
+                {content.home.text3}
+                <a href={`tel:${content.contact.phone}`}>HERE</a>.
               </p>
             </Section>
           )}
 
-          {tab === 'employment' && (
-            <Section title={content.employment.title}>
-              {content.employment.jobs.map((job, i) => (
-                <div key={i} style={{ marginTop: i === 0 ? 0 : '1rem' }}>
-                  <strong>{job.title}</strong>
-                  <p style={{ fontSize: '0.9rem', color: '#666' }}>{job.years}</p>
-                  <p>{job.desc}</p>
-                </div>
-              ))}
+          {tab === 'services' && (
+            <Section title={content.services.title}>
+              <ul>
+                {content.services.items.map((item, i) => <li key={i}>{item}</li>)}
+              </ul>
             </Section>
           )}
 
@@ -128,13 +117,100 @@ function App() {
             </Section>
           )}
 
+          {tab === 'industries' && (
+            <Section title={content.industries.title}>
+              {content.industries.industry.map((job, i) => (
+                <div key={i} style={{ marginTop: i === 0 ? 0 : '1rem' }}>
+                  <strong>{job.title}</strong>
+                  <p style={{ fontSize: '0.9rem', color: '#666' }}>{job.years}</p>
+                  <p>{job.desc}</p>
+                </div>
+              ))}
+            </Section>
+          )}
+
+          {tab === 'clients' && (
+            <Section title={content.clients.title}>
+              <ul
+                style={{
+                  listStyle: 'none',
+                  padding: 0,
+                  marginTop: 0,
+                  marginBottom: 0,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  width: '100%',
+                }}
+              >
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    width: 'fit-content',
+                    minWidth: 260,
+                  }}
+                >
+                  {content.clients.items.map((item, i) => (
+                    <li
+                      key={i}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        borderBottom: '1px solid #eee',
+                        paddingTop: 0,
+                        paddingBottom: 0,
+                        width: '100%',
+                        boxSizing: 'border-box',
+                      }}
+                    >
+                      <div
+                        style={{
+                          marginRight: '1.5rem',
+                          width: 64,
+                          height: 64,
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          flexShrink: 0,
+                          paddingTop: '1rem',
+                          paddingBottom: '2rem',
+                        }}
+                      >
+                        {item.logo ? (
+                          <img
+                            src={item.logo}
+                            alt={`${item.name} logo`}
+                            style={{ maxWidth: 64, maxHeight: 64, objectFit: 'contain' }}
+                          />
+                        ) : (
+                          <div style={{ width: 64, height: 64, background: '#f0f0f0', borderRadius: 8 }} />
+                        )}
+                      </div>
+                      <div style={{ flex: 1, paddingTop: '1rem', paddingBottom: '2rem' }}>
+                        <div style={{ fontWeight: 'bold' }}>{item.name}</div>
+                        <div style={{ color: '#666', fontSize: '0.95rem' }}>{item.description}</div>
+                      </div>
+                    </li>
+                  ))}
+                </div>
+              </ul>
+            </Section>
+          )}
+
           {tab === 'contact' && (
             <Section title={content.contact.title}>
-              <p>
-                {content.contact.text}
-                <br />
-                <strong>Email:</strong> <a href={`mailto:${content.contact.email}`}>{content.contact.email}</a>
-              </p>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <p style={{ textAlign: 'center' }}>
+                  {content.contact.text}
+                  <br />
+                  <br />
+                  <strong>Email:</strong> <a href={`mailto:${content.contact.email}`}>{content.contact.email}</a>
+                  <br />
+                  <strong>Phone:</strong> <a href={`tel:${content.contact.phone}`}>{content.contact.phone}</a>
+                </p>
+              </div>
             </Section>
           )}
         </main>
