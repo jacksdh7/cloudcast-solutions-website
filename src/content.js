@@ -5,7 +5,6 @@ const content = {
     portraitSrc: "/cloudcast-solutions-website/headshot.jpg",
     tabs: [
         { label: "Home", value: "home" },
-        { label: "Services", value: "services" },
         { label: "Case Studies", value: "projects" },
         { label: "Industries Served", value: "industries" },
         { label: "Clients", value: "clients" },
@@ -49,17 +48,80 @@ const content = {
     },
     industries: {
         title: "Industries Served",
+        desc: `At Cloudcast Solutions LLC, we've brought deep technical expertise to a wide range of industries. With 
+        experience spanning commercial, defense, healthcare, legal, and emerging markets, we understand that each sector 
+        has unique challenges. Our custom-engineered solutions are built for security, scalability, and mission-critical 
+        performance.`,
         industry: [
             {
-                title: "Healthcare Services",
-                years: "Regulatory compliance (HIPAA), data integrity, secure storage and access, custom EHR integrations.",
-                desc: "We develop secure, scalable data acquisition and storage systems tailored to the unique compliance needs of healthcare providers, biotech firms, and health-tech startups."
+                title: "Startups & Product Development",
+                desc: `We serve as technical advisors and development leads for early-stage companies, helping bring 
+                ideas to life quickly through lean MVPs. Our team guides founders through architecture, compliance, 
+                and scaling decisions.`,
+                items: [
+                    "MVP development and technical planning",
+                    "Mobile app architecture and codebase reviews",
+                    "Time-sensitive bug resolution and go-to-market readiness",
+                ],
             },
             {
-                title: "Startups & Tech Innovators",
-                years: "Time to market, MVP validation, architecture decisions.",
-                desc: "We serve as technical co-founders for early-stage startups, helping them validate ideas, build MVPs, and scale securely and efficiently."
-            }
+                title: "Legal & Law Firms",
+                desc: `We support law firms by aligning technical solutions with legal compliance and case needs. From 
+                data acquisition and chain-of-custody preservation to digital forensics and recovery, we help legal teams 
+                handle sensitive data with precision and integrity.`,
+                items: [
+                    "Secure data acquisition and verification for litigation support",
+                    "Recovery and reconstruction of deleted or corrupted files",
+                    "Digital forensics for civil and criminal cases",
+                    "Ensuring evidentiary standards in data handling and reporting",
+                ],
+            },
+            {
+                title: "Healthcare & Pharmaceutical",
+                desc: `From mobile prescription platforms to patient engagement tools, we've helped build HIPAA-conscious, 
+                secure, and scalable healthcare applications. Whether integrating pharmacy systems or designing 
+                mobile-first health apps, our solutions support medication access, data privacy, and seamless 
+                user experience.`,
+                items: [
+                    "Mobile app development for pharmacies and patients",
+                    "Drug pricing APIs and location-based services",
+                    "Secure patient communications and data handling",
+                ],
+            },
+            {
+                title: "Embedded Systems & IoT",
+                desc: `We design and deploy firmware and low-level applications for embedded hardware across industrial and 
+                research settings. From digital signal processing to sensor data acquisition, our embedded solutions operate 
+                in the real world with high reliability.`,
+                items: [
+                    "Microcontroller-based communication systems",
+                    "Digital signal processing for audio and sensors",
+                    "Custom PCB design and hardware efficient firmware development",
+                ],
+            },
+            {
+                title: "Telecommunications & Networking",
+                desc: `With hands-on experience in real-time communication systems, VoIP, and secure network communications, 
+                we've engineer software that connects users reliably and privately. Our cloud-based and embedded telecom work is 
+                used in both public and private sectors.`,
+                items: [
+                    "Real-time encrypted VoIP over cloud based architectures",
+                    "Heterogeneous wireless communication systems",
+                    "Network automation and provisioning",
+                ],
+            },
+            {
+                title: "Defense & Government",
+                desc: `With a background in cybersecurity, embedded systems, and encrypted communications, we've 
+                delivered mission-critical solutions for defense and federal agencies. We specialize in hardened 
+                systems, secure messaging, and embedded software for rugged environments.`,
+                items: [
+                    "Encrypted communication and embedded security",
+                    "Real-time tracking and surveillance systems",
+                    "Linux kernel modules for embedded devices",
+                    "Secure provisioning and automation pipelines",
+                ],
+            },
         ]
     },
     clients: {
@@ -74,11 +136,6 @@ const content = {
                 name: "DUKAPAQ",
                 description: "Mobile App Development and Release, Custom POS Devices Integration",
                 logo: "/cloudcast-solutions-website/dukapaq_logo.webp"
-            },
-            {
-                name: "Gold Rule, Inc.",
-                description: "Data Recovery and Archival Web Scraping",
-                logo: ""
             },
             {
                 name: "Express Scripts",

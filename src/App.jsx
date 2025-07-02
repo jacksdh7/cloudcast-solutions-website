@@ -98,14 +98,6 @@ function App() {
             </Section>
           )}
 
-          {tab === 'services' && (
-            <Section title={content.services.title}>
-              <ul>
-                {content.services.items.map((item, i) => <li key={i}>{item}</li>)}
-              </ul>
-            </Section>
-          )}
-
           {tab === 'projects' && (
             <Section title={content.projects.title}>
               {content.projects.projects.map((proj, i) => (
@@ -119,13 +111,42 @@ function App() {
 
           {tab === 'industries' && (
             <Section title={content.industries.title}>
-              {content.industries.industry.map((job, i) => (
-                <div key={i} style={{ marginTop: i === 0 ? 0 : '1rem' }}>
-                  <strong>{job.title}</strong>
-                  <p style={{ fontSize: '0.9rem', color: '#666' }}>{job.years}</p>
-                  <p>{job.desc}</p>
-                </div>
-              ))}
+              <div style={{ maxWidth: 700, margin: '0 auto 2rem auto', color: '#444', fontSize: '1.08rem', textAlign: 'center' }}>
+                {content.industries.desc}
+              </div>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                {content.industries.industry.map((industry, i) => (
+                  <li
+                    key={i}
+                    style={{
+                      marginBottom: '2rem',
+                      padding: '0 0 1.5rem 0',
+                      maxWidth: 600,
+                      marginLeft: 'auto',
+                      marginRight: 'auto',
+                      border: 'none',
+                      background: 'none',
+                      boxShadow: 'none'
+                    }}
+                  >
+                    <div style={{ fontWeight: 'bold', fontSize: '1.1rem', marginBottom: '0.5rem' }}>
+                      {industry.title}
+                    </div>
+                    <div style={{ marginBottom: industry.items?.length ? '0.5rem' : 0 }}>
+                      {industry.desc}
+                    </div>
+                    {industry.items && industry.items.length > 0 && (
+                      <ul style={{ paddingLeft: '1.2rem', margin: 0 }}>
+                        {industry.items.map((item, j) => (
+                          <li key={j} style={{ marginBottom: '0.25rem', color: '#444', fontSize: '0.98rem' }}>
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                ))}
+              </ul>
             </Section>
           )}
 
