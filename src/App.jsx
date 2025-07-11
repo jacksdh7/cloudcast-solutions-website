@@ -100,10 +100,29 @@ function App() {
 
           {tab === 'projects' && (
             <Section title={content.projects.title}>
+              <div style={{ maxWidth: 700, margin: '0 auto 2rem auto', color: '#444', fontSize: '1.08rem', textAlign: 'center' }}>
+                {content.projects.desc}
+              </div>
               {content.projects.projects.map((proj, i) => (
-                <div key={i} style={{ marginTop: i === 0 ? 0 : '1rem' }}>
-                  <strong>{proj.title}</strong>
-                  <p>{proj.desc}</p>
+                <div key={i} style={{ marginTop: i === 0 ? 0 : '2rem', maxWidth: 700, marginLeft: 'auto', marginRight: 'auto', paddingBottom: '1.5rem', borderBottom: i !== content.projects.projects.length - 1 ? '1px solid #eee' : 'none' }}>
+                  <div style={{ fontWeight: 'bold', fontSize: '1.15rem', marginBottom: '0.5rem' }}>
+                    {proj.title}
+                  </div>
+                  <div style={{ marginBottom: '0.3rem' }}>
+                    <strong>{content.projects.lable1}</strong> {proj.text1}
+                  </div>
+                  <div style={{ marginBottom: '0.3rem' }}>
+                    <strong>{content.projects.lable2}</strong> {proj.text2}
+                  </div>
+                  <div style={{ marginBottom: '0.3rem' }}>
+                    <strong>{content.projects.lable3}</strong> {proj.text3}
+                  </div>
+                  <div style={{ marginBottom: '0.3rem' }}>
+                    <strong>{content.projects.lable4}</strong> {proj.text4}
+                  </div>
+                  <div>
+                    <strong>{content.projects.lable5}</strong> {proj.text5}
+                  </div>
                 </div>
               ))}
             </Section>

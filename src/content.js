@@ -13,12 +13,11 @@ const content = {
     home: {
         title: "About Cloudcast Solutions",
         text1: `Cloudcast Solutions LLC is a premier computer engineering consulting firm based in Tulsa, OK. 
-        We specialize in application architecture, cybersecurity, data acquisition and integrity, minimum 
-        viable product (MVP) development, and strategic technical advisory services.`,
+        We specialize in minimum viable product (MVP) development, strategic technical advisory services, mobile 
+        app development, data acquisition and integrity, embedded hardware development, and application architecture.`,
         text2: `Since 2019, we've partnered with businesses of all sizes—both locally and globally—to deliver 
-        robust, scalable, and secure software solutions. From guiding MVP launches to supporting secure data 
-        acquisition, storage, and recovery, our mission is to empower our clients with high-quality engineering 
-        expertise that drives results.`,
+        robust, scalable, and secure software and hardware solutions. Our mission is to empower our clients with high-quality 
+        engineering expertise that drives results.`,
         text3: `Our team of seasoned professionals is dedicated to helping organizations overcome complex 
         technical challenges and achieve their technology goals with confidence and clarity. Schedule a FREE 
         30-minute consultation call `,
@@ -35,15 +34,71 @@ const content = {
     },
     projects: {
         title: "Case Studies",
+        desc: `Explore how Cloudcast Solutions LLC has delivered secure, scalable, and mission-critical software solutions across industries. 
+        Below are select highlights from past engagements—showcasing technical depth, innovative design, and tangible results.`,
+        lable1: "Client: ",
+        lable2: "Industry: ",
+        lable3: "Challenge: ",
+        lable4: "Solution: ",
+        lable5: "Outcome: ",
         projects: [
             {
-                title: "Legacy System Modernization",
-                desc: "Modernized a decades-old codebase for a financial client, cutting maintenance costs by 50%."
+                title: "Technical Advisory for a Fintech Startup",
+                text1: "DUKAPAQ (Kenya & U.S.)",
+                text2: 'Fintech / Startups',
+                text3: "Guide a remote dev team building mobile Point-of-Sale and payment apps in an emerging market.",
+                text4: "Provided codebase structure recommendations, performance tuning, secure feature development, and mentoring.",
+                text5: "Helped the team successfully relaunch their mobile POS app and improved long-term maintainability. Delivered custom POS hardware solution for internal use and resale.",
             },
             {
-                title: "Startup Tech Due Diligence",
-                desc: "Performed code audits and scalability assessments for VC-backed startups."
-            }
+                title: "Mobile Prescription Drug Pricing Platform",
+                text1: "Express Scripts",
+                text2: 'Healthcare & Pharmaceutical',
+                text3: "Help consumers find the best pricing for prescription medications based on location.",
+                text4: "Led Kotlin development for a mobile app that integrates drug pricing APIs and geolocation to locate the cheapest prices at nearby pharmacies.",
+                text5: "Maintained and enhanced the app post-launch, streamlining prescription price transparency for thousands of users.",
+            },
+            {
+                title: "Digital Evidence Recovery for Civil Litigation",
+                text1: "Kingsley & Hird Law Firm",
+                text2: 'Legal / Digital Forensics',
+                text3: "Recover and verify potentially case-critical data from client's hard drive while preserving the chain of custody and meeting evidentiary standards.",
+                text4: `Created a forensic image of the original drive to preserve data integrity. Used specialized recovery tools to extract files, including email archives 
+                and document metadata. Verified file authenticity through checksums, timestamps, and cross-referencing with known data artifacts.`,
+                text5: "Recovered requested data and maintained data formating and readability. The firm was able to admit the evidence in court, thanks to the validation protocols we provided.",
+            },
+            {
+                title: "Pharmacy-to-Door Mobile App",
+                text1: "Express Scripts",
+                text2: 'Healthcare & Pharmaceutical',
+                text3: "Simplify ordering and delivery of prescription medications through a secure mobile platform.",
+                text4: "Served as the lead Kotlin developer, integrating secure authentication, delivery scheduling, and medication management.",
+                text5: "Maintained and enhanced the app post-launch, ensuring compliance with HIPAA and improving user PII protections.",
+            },
+            {
+                title: "Secure Telephony over the Internet",
+                text1: "Confidential (Under NDA)",
+                text2: 'Defense & Government',
+                text3: "Build a secure, cloud-based and provider agnostic communication platform that masks user identity and protects call data.",
+                text4: "Developed a VoIP solution using Asterisk PBX, encrypted tunnels, and custom secure APIs.",
+                text5: "Delivered a fully encrypted, anonymous communications platform suitable for high-risk user scenarios and hostile networks that functions across the globe.",
+            },
+            {
+                title: "Digital Audio Processing on Embedded Hardware",
+                text1: "Digital Audio Solutions",
+                text2: 'Embedded Systems / Audio Engineering / Home Audio Products',
+                text3: "Design a digital audio device capable of filtering and transforming audio in real time.",
+                text4: "Developed firmware using the CMSIS DSP library for ARM Cortex-M7 microcontrollers and designed a custom PCB.",
+                text5: "Completed a working MVP capable of high-quality digital audio processing on a constrained device and within budget.",
+            },
+            {
+                title: "Encrypted Mobile Communications for the U.S. Department of Defense",
+                text1: "U.S.Naval Surface Warfare Center",
+                text2: 'Defense & Government',
+                text3: "Enable encrypted and encoded speech communication over extremely low-bandwidth signals for secure field operations.",
+                text4: "Designed and implemented an encrypted speech transmission system capable of streaming audio at just 2.4 kbps on Android devices.",
+                text5: "Successfully deployed in unsecure environments, extending secure communication capabilities in constrained tactical scenarios.",
+            },
         ]
     },
     industries: {
