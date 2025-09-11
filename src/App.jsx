@@ -103,10 +103,26 @@ function App() {
             <Section title={content.home.title}>
               <p>{content.home.text1}</p>
               <p>{content.home.text2}</p>
-              <p>
-                {content.home.text3}
-                <a href={`tel:${content.contact.phone}`} style={{ color: 'var(--secondary)' }}>HERE</a>.
-              </p>
+              <p>{content.home.text3}</p>
+              <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}>
+                <button
+                  style={{
+                    background: 'var(--accent)',
+                    color: 'var(--text)',
+                    fontFamily: "'Droid Sans', Arial, sans-serif",
+                    fontWeight: 'bold',
+                    fontSize: '1.1rem',
+                    padding: '0.7em 1.5em',
+                    borderRadius: '8px',
+                    border: 'none',
+                    cursor: 'pointer',
+                    boxShadow: '0 2px 8px rgba(97,127,141,0.08)'
+                  }}
+                  onClick={() => window.open(`mailto:${content.contact.email}?subject=Consultation Request`, '_blank')}
+                >
+                  {content.home.buttonText}
+                </button>
+              </div>
             </Section>
           )}
 
@@ -151,116 +167,92 @@ function App() {
 
           {tab === 'industries' && (
             <Section title={content.industries.title}>
-              <div style={{ maxWidth: 700, margin: '0 auto 2rem auto', color: 'var(--text)', fontSize: '1.08rem', textAlign: 'center' }}>
+              <div
+                style={{
+                  maxWidth: 700,
+                  margin: '0 auto 1.2rem auto',
+                  color: 'var(--text)',
+                  fontSize: '1.08rem',
+                  textAlign: 'center'
+                }}
+              >
                 {content.industries.desc}
               </div>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                {content.industries.industry.map((industry, i) => (
-                  <li
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  margin: '0 auto',
+                  maxWidth: 600,
+                  width: '100%',
+                  textAlign: 'center'
+                }}
+              >
+                {Object.values(content.industries.industry).map((title, i) => (
+                  <div
                     key={i}
                     style={{
-                      marginBottom: '2rem',
-                      padding: '0 0 1.5rem 0',
-                      maxWidth: 600,
-                      marginLeft: 'auto',
-                      marginRight: 'auto',
-                      border: 'none',
-                      background: 'var(--background)',
-                      boxShadow: 'none',
-                      color: 'var(--text)'
+                      fontWeight: 'bold',
+                      fontSize: '1.1rem',
+                      color: 'var(--primary)',
+                      marginBottom: '0.5rem'
                     }}
                   >
-                    <div style={{ fontWeight: 'bold', fontSize: '1.1rem', marginBottom: '0.5rem', color: 'var(--primary)' }}>
-                      {industry.title}
-                    </div>
-                    <div style={{ marginBottom: industry.items?.length ? '0.5rem' : 0, color: 'var(--text)' }}>
-                      {industry.desc}
-                    </div>
-                    {industry.items && industry.items.length > 0 && (
-                      <ul style={{ paddingLeft: '1.2rem', margin: 0 }}>
-                        {industry.items.map((item, j) => (
-                          <li key={j} style={{ marginBottom: '0.25rem', color: 'var(--text)', fontSize: '0.98rem' }}>
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </li>
+                    {title}
+                  </div>
                 ))}
-              </ul>
+              </div>
             </Section>
           )}
 
           {tab === 'clients' && (
             <Section title={content.clients.title}>
-              <ul
+              <div
                 style={{
-                  listStyle: 'none',
-                  padding: 0,
-                  marginTop: 0,
-                  marginBottom: 0,
-                  display: 'flex',
-                  flexDirection: 'column',
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(3, 1fr)',
+                  gap: '2rem',
+                  justifyItems: 'center',
                   alignItems: 'center',
                   width: '100%',
+                  margin: '0 auto',
+                  maxWidth: 800,
                 }}
               >
-                <div
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    width: 'fit-content',
-                    minWidth: 260,
-                  }}
-                >
-                  {content.clients.items.map((item, i) => (
-                    <li
-                      key={i}
+                {content.clients.items.map((item, i) => (
+                  <div
+                    key={i}
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      background: 'var(--background)',
+                      borderRadius: '10px',
+                      padding: '1rem 0.5rem',
+                      boxSizing: 'border-box',
+                      width: '100%',
+                    }}
+                  >
+                    <img
+                      src={item.logo}
+                      alt={`${item.name} logo`}
                       style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        borderBottom: '1px solid var(--primary)',
-                        paddingTop: 0,
-                        paddingBottom: 0,
-                        width: '100%',
-                        boxSizing: 'border-box',
-                        background: 'var(--background)',
-                        color: 'var(--text)'
+                        maxWidth: 160,
+                        maxHeight: 160,
+                        objectFit: 'contain',
+                        marginBottom: '0.7rem',
+                        background: 'var(--background)'
                       }}
-                    >
-                      <div
-                        style={{
-                          marginRight: '1.5rem',
-                          width: 64,
-                          height: 64,
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          flexShrink: 0,
-                          paddingTop: '1rem',
-                          paddingBottom: '2rem',
-                          background: 'var(--background)'
-                        }}
-                      >
-                        {item.logo ? (
-                          <img
-                            src={item.logo}
-                            alt={`${item.name} logo`}
-                            style={{ maxWidth: 64, maxHeight: 64, objectFit: 'contain' }}
-                          />
-                        ) : (
-                          <div style={{ width: 64, height: 64, background: 'var(--accent)', borderRadius: 8 }} />
-                        )}
-                      </div>
-                      <div style={{ flex: 1, paddingTop: '1rem', paddingBottom: '2rem', color: 'var(--text)' }}>
-                        <div style={{ fontWeight: 'bold', color: 'var(--primary)' }}>{item.name}</div>
-                        <div style={{ color: 'var(--secondary)', fontSize: '0.95rem' }}>{item.description}</div>
-                      </div>
-                    </li>
-                  ))}
-                </div>
-              </ul>
+                    />
+                    <div style={{ fontWeight: 'bold', color: 'var(--primary)', textAlign: 'center', fontSize: '1rem' }}>
+                      {item.name}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </Section>
           )}
 
