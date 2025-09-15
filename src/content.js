@@ -18,7 +18,7 @@ const content = {
         text2: `Since 2019, we've partnered with businesses of all sizes—both locally and globally—to deliver 
         robust, scalable, and secure software and hardware solutions. Our mission is to empower our clients with high-quality 
         engineering expertise that drives results.`,
-        text3: `Schedule a FREE 30-minute consultation call by clicking the button below.`,
+        text3: `Schedule a FREE 30-minute consultation call by clicking the button below!`,
         buttonText: "SCHEDULE NOW"
     },
     services: {
@@ -42,6 +42,7 @@ const content = {
         lable5: "Outcome: ",
         projects: [
             {
+                image: "/cloudcast-solutions-website/dukapaq_logo.webp",
                 title: "Technical Advisory for a Fintech Startup",
                 text1: "DUKAPAQ (Kenya & U.S.)",
                 text2: 'Fintech / Startups',
@@ -50,14 +51,16 @@ const content = {
                 text5: "Helped the team successfully relaunch their mobile POS app and improved long-term maintainability. Delivered custom POS hardware solution for internal use and resale.",
             },
             {
+                image: "/cloudcast-solutions-website/Inside_Rx.jpeg",
                 title: "Mobile Prescription Drug Pricing Platform",
-                text1: "Express Scripts",
+                text1: "Inside Rx",
                 text2: 'Healthcare & Pharmaceutical',
                 text3: "Help consumers find the best pricing for prescription medications based on location.",
                 text4: "Led Kotlin development for a mobile app that integrates drug pricing APIs and geolocation to locate the cheapest prices at nearby pharmacies.",
                 text5: "Maintained and enhanced the app post-launch, streamlining prescription price transparency for thousands of users.",
             },
             {
+                image: "/cloudcast-solutions-website/kingsley_hird_logo.png",
                 title: "Digital Evidence Recovery for Civil Litigation",
                 text1: "Kingsley & Hird Law Firm",
                 text2: 'Legal / Digital Forensics',
@@ -67,6 +70,7 @@ const content = {
                 text5: "Recovered requested data and maintained data formating and readability. The firm was able to admit the evidence in court, thanks to the validation protocols we provided.",
             },
             {
+                image: "/cloudcast-solutions-website/Express_Scripts.png",
                 title: "Pharmacy-to-Door Mobile App",
                 text1: "Express Scripts",
                 text2: 'Healthcare & Pharmaceutical',
@@ -75,6 +79,7 @@ const content = {
                 text5: "Maintained and enhanced the app post-launch, ensuring compliance with HIPAA and improving user PII protections.",
             },
             {
+                image: "",
                 title: "Secure Telephony over the Internet",
                 text1: "Confidential (Under NDA)",
                 text2: 'Defense & Government',
@@ -83,6 +88,7 @@ const content = {
                 text5: "Delivered a fully encrypted, anonymous communications platform suitable for high-risk user scenarios and hostile networks that functions across the globe.",
             },
             {
+                image: "/cloudcast-solutions-website/DAS_Logo03.png",
                 title: "Digital Audio Processing on Embedded Hardware",
                 text1: "Digital Audio Solutions",
                 text2: 'Embedded Systems / Audio Engineering / Home Audio Products',
@@ -91,11 +97,12 @@ const content = {
                 text5: "Completed a working MVP capable of high-quality digital audio processing on a constrained device and within budget.",
             },
             {
+                image: "/cloudcast-solutions-website/nswc_logo.png",
                 title: "Encrypted Mobile Communications for the U.S. Department of Defense",
                 text1: "U.S.Naval Surface Warfare Center",
                 text2: 'Defense & Government',
                 text3: "Enable encrypted and encoded speech communication over extremely low-bandwidth signals for secure field operations.",
-                text4: "Designed and implemented an encrypted speech transmission system capable of streaming audio at just 2.4 kbps on Android devices.",
+                text4: "Designed and implemented an encrypted speech transmission system capable of streaming audio over extremely low-bandwidth signals.",
                 text5: "Successfully deployed in unsecure environments, extending secure communication capabilities in constrained tactical scenarios.",
             },
         ]
@@ -154,9 +161,13 @@ const content = {
     },
     contact: {
         title: "Contact",
-        text: `Reach out by email to setup a FREE 30 minute consultation call!`,
+        text: `Reach out by email or fill out the form below to setup a FREE 30 minute consultation call!`,
         email: "cloudcastsolutionsllc@gmail.com",
-        phone: "918-280-8058"
+        phone: "918-280-8058",
+        formNameLabel: "Name",
+        formEmailLabel: "Email",
+        formMessageLabel: "Message",
+        formButtonText: "Send Message"
     }
 };
 
