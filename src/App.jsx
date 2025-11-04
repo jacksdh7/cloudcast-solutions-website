@@ -478,8 +478,6 @@ function App() {
                   <br />
                   <br />
                   <strong>Email:</strong> <a href={`mailto:${content.contact.email}`} style={{ color: 'var(--secondary)' }}>{content.contact.email}</a>
-                  <br />
-                  <strong>Phone:</strong> <a href={`tel:${content.contact.phone}`} style={{ color: 'var(--secondary)' }}>{content.contact.phone}</a>
                 </p>
                 <form
                   style={{

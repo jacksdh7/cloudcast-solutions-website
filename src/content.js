@@ -163,7 +163,6 @@ const content = {
         title: "Contact",
         text: `Reach out by email or fill out the form below to setup a FREE 30 minute consultation call!`,
         email: "cloudcastsolutionsllc@gmail.com",
-        phone: "918-280-8058",
         formNameLabel: "Name",
         formEmailLabel: "Email",
         formMessageLabel: "Message",
