@@ -41,16 +41,25 @@ function Section({ title, children }) {
 function App() {
   const [tab, setTab] = useState('home');
   const [navOpen, setNavOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 700);
+
+  // track window width in state so components can derive breakpoints consistently
+  const [width, setWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
 
   useEffect(() => {
     function handleResize() {
-      setIsMobile(window.innerWidth < 700);
+      setWidth(window.innerWidth);
       if (window.innerWidth >= 700) setNavOpen(false);
     }
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  // derived breakpoints
+  const isMobile = width < 700;
+  const isNarrow = width < 500;
+
+  // NAV_HEIGHT controls the fixed nav height and the top offset of the main content.
+  const NAV_HEIGHT = 56;
 
   return (
     <div
@@ -73,13 +82,14 @@ function App() {
           top: 0,
           left: 0,
           width: '100vw',
+          height: `${NAV_HEIGHT}px`,
           zIndex: 100,
           borderBottom: `1px solid var(--primary)`,
           background: 'var(--primary)',
           boxShadow: '0 2px 12px rgba(97,127,141,0.12)',
-          padding: isMobile ? '0.5rem 1rem' : '0.5rem 0',
+          padding: isMobile ? '0 1rem' : '0',
           display: 'flex',
-          flexDirection: isMobile ? 'row' : 'column',
+          flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'center'
         }}
@@ -97,7 +107,8 @@ function App() {
                 fontWeight: 'bold',
                 fontSize: '1.1rem',
                 cursor: 'pointer',
-                marginRight: 'auto'
+                marginLeft: 'auto',
+                marginRight: '0.75rem'
               }}
               onClick={() => setNavOpen(!navOpen)}
             >
@@ -134,54 +145,102 @@ function App() {
             )}
           </>
         ) : (
-          <div style={{ maxWidth: '800px', width: '100%', display: 'flex', justifyContent: 'space-around' }}>
-            {content.tabs.map(tabObj => (
-              <Tab
-                key={tabObj.value}
-                label={tabObj.label}
-                value={tabObj.value}
-                selectedTab={tab}
-                onClick={setTab}
-              />
-            ))}
+          <div style={{
+            maxWidth: '800px',
+            width: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            position: 'relative'
+          }}>
+            <div style={{ display: 'flex', gap: '1rem' }}>
+              {content.tabs.map(tabObj => (
+                <Tab
+                  key={tabObj.value}
+                  label={tabObj.label}
+                  value={tabObj.value}
+                  selectedTab={tab}
+                  onClick={setTab}
+                />
+              ))}
+            </div>
           </div>
         )}
       </nav>
+
       <div style={{
         maxWidth: '800px',
         width: '100%',
-        padding: '2rem 1rem',
+        // ensure the top of the main content sits directly under the nav (no gap)
+        marginTop: `${NAV_HEIGHT}px`,
+        padding: '0 1rem 2rem 1rem',   // remove top padding so image touches nav
         fontFamily: "'Droid Sans', Arial, sans-serif",
         background: 'var(--background)',
-        color: 'var(--text)',
-        marginTop: isMobile ? '4.5rem' : '4.5rem'
+        color: 'var(--text)'
       }}>
-        <main style={{ marginTop: '1rem', fontFamily: "'Droid Sans', Arial, sans-serif" }}>
+        <main style={{ marginTop: '0', fontFamily: "'Droid Sans', Arial, sans-serif" }}>
           {tab === 'home' && (
             <>
-              <header style={{
-                textAlign: 'center',
-                marginBottom: '2rem'
-              }}>
-                <div style={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  marginBottom: '1.5rem'
-                }}>
-                  <img
-                    src={content.portraitSrc}
-                    alt={content.portraitAlt}
-                    style={{
-                      width: '100%',
-                      maxWidth: '360px',
-                      height: 'auto',
-                      objectFit: 'cover',
-                      borderRadius: '50%',
-                      border: `3px solid var(--accent)`,
-                      background: 'var(--background)'
-                    }}
-                  />
-                </div>
+              <header style={{ textAlign: 'center', marginBottom: '2rem' }}>
+                {/* responsive skyline banner: full-bleed on mobile, constrained to content on desktop */}
+                {isMobile ? (
+                  <div style={{
+                    width: '100vw',
+                    position: 'relative',
+                    left: '50%',
+                    marginLeft: '-50vw',   // full-bleed ignoring parent padding
+                    overflow: 'hidden'
+                  }}>
+                    <img
+                      src="/cloudcast-solutions-website/Downtown_Tulsa_Panoramic.jpg"
+                      alt="Tulsa skyline"
+                      style={{
+                        width: '100%',
+                        height: '200px',    // slightly shorter on narrow screens
+                        objectFit: 'cover',
+                        display: 'block'
+                      }}
+                    />
+                    <div style={{
+                      fontSize: '0.7rem',
+                      color: 'var(--secondary)',
+                      textAlign: 'right',
+                      padding: '6px 10px',
+                      background: 'rgba(255,255,255,0)', // transparent background so no extra gap
+                      boxSizing: 'border-box'
+                    }}>
+                      Creator / Credit: Robert J. Baird · © Robert J. Baird
+                    </div>
+                  </div>
+                ) : (
+                  <div style={{
+                    width: '100%',
+                    maxWidth: 800,       // constrained to content width on desktop
+                    margin: '0 auto',
+                    boxSizing: 'border-box',
+                    overflow: 'hidden'
+                  }}>
+                    <img
+                      src="/cloudcast-solutions-website/Downtown_Tulsa_Panoramic.jpg"
+                      alt="Tulsa skyline"
+                      style={{
+                        width: '100%',
+                        height: '260px',
+                        objectFit: 'cover',
+                        display: 'block'
+                      }}
+                    />
+                    <div style={{
+                      fontSize: '0.8rem',
+                      color: 'var(--secondary)',
+                      textAlign: 'right',
+                      padding: '8px 0 0 0'
+                    }}>
+                      Creator / Credit: Robert J. Baird · © Robert J. Baird
+                    </div>
+                  </div>
+                )}
+
                 <h1 style={{
                   fontSize: '2.2rem',
                   fontWeight: 'bold',
@@ -241,8 +300,8 @@ function App() {
                   key={i}
                   style={{
                     display: 'flex',
-                    flexDirection: window.innerWidth < 700 ? 'column' : 'row',
-                    alignItems: window.innerWidth < 700 ? 'center' : 'flex-start',
+                    flexDirection: isMobile ? 'column' : 'row',
+                    alignItems: isMobile ? 'center' : 'flex-start',
                     marginTop: i === 0 ? 0 : '2rem',
                     maxWidth: 700,
                     marginLeft: 'auto',
@@ -256,8 +315,8 @@ function App() {
                   <div style={{
                     minWidth: 100,
                     maxWidth: 120,
-                    marginRight: window.innerWidth < 700 ? 0 : '1.5rem',
-                    marginBottom: window.innerWidth < 700 ? '1rem' : 0,
+                    marginRight: isMobile ? 0 : '1.5rem',
+                    marginBottom: isMobile ? '1rem' : 0,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center'
@@ -267,16 +326,16 @@ function App() {
                         src={proj.image}
                         alt={`${proj.title} logo`}
                         style={{
-                          width: window.innerWidth < 700 ? '80px' : '100px',
-                          height: window.innerWidth < 700 ? '80px' : '100px',
+                          width: isMobile ? '80px' : '100px',
+                          height: isMobile ? '80px' : '100px',
                           objectFit: 'contain',
                           background: 'var(--background)'
                         }}
                       />
                     ) : (
                       <div style={{
-                        width: window.innerWidth < 700 ? '80px' : '100px',
-                        height: window.innerWidth < 700 ? '80px' : '100px',
+                        width: isMobile ? '80px' : '100px',
+                        height: isMobile ? '80px' : '100px',
                         background: 'var(--accent)',
                         borderRadius: '8px',
                         display: 'flex',
@@ -345,7 +404,7 @@ function App() {
                     key={i}
                     style={{
                       fontWeight: 'bold',
-                      fontSize: window.innerWidth < 500 ? '1rem' : '1.1rem',
+                      fontSize: isNarrow ? '1rem' : '1.1rem',
                       color: 'var(--primary)',
                       marginBottom: '0.5rem'
                     }}
@@ -362,7 +421,7 @@ function App() {
               <div
                 style={{
                   display: 'grid',
-                  gridTemplateColumns: window.innerWidth < 700 ? '1fr' : 'repeat(3, 1fr)',
+                  gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
                   gap: '2rem',
                   justifyItems: 'center',
                   alignItems: 'center',
@@ -381,7 +440,7 @@ function App() {
                       justifyContent: 'center',
                       background: 'var(--background)',
                       borderRadius: '10px',
-                      padding: window.innerWidth < 500 ? '1rem 0.2rem' : '1rem 0.5rem',
+                      padding: isNarrow ? '1rem 0.2rem' : '1rem 0.5rem',
                       boxSizing: 'border-box',
                       width: '100%',
                     }}
@@ -390,8 +449,8 @@ function App() {
                       src={item.logo}
                       alt={`${item.name} logo`}
                       style={{
-                        maxWidth: window.innerWidth < 500 ? 100 : 160,
-                        maxHeight: window.innerWidth < 500 ? 100 : 160,
+                        maxWidth: isNarrow ? 100 : 160,
+                        maxHeight: isNarrow ? 100 : 160,
                         objectFit: 'contain',
                         marginBottom: '0.7rem',
                         background: 'var(--background)'
@@ -401,7 +460,7 @@ function App() {
                       fontWeight: 'bold',
                       color: 'var(--primary)',
                       textAlign: 'center',
-                      fontSize: window.innerWidth < 500 ? '0.9rem' : '1rem'
+                      fontSize: isNarrow ? '0.9rem' : '1rem'
                     }}>
                       {item.name}
                     </div>
@@ -431,7 +490,7 @@ function App() {
                     maxWidth: 400,
                     marginTop: '2rem',
                     background: 'var(--background)',
-                    padding: window.innerWidth < 500 ? '1rem' : '1.5rem',
+                    padding: isNarrow ? '1rem' : '1.5rem',
                     borderRadius: '10px',
                     boxShadow: '0 6px 24px rgba(97,127,141,0.18)'
                   }}
@@ -475,7 +534,7 @@ function App() {
                     <textarea
                       name="Message"
                       required
-                      rows={window.innerWidth < 500 ? 3 : 5}
+                      rows={isNarrow ? 3 : 5}
                       style={{
                         width: '100%',
                         padding: '0.5rem',
@@ -494,8 +553,8 @@ function App() {
                       background: 'var(--accent)',
                       color: 'var(--text)',
                       fontWeight: 'bold',
-                      fontSize: window.innerWidth < 500 ? '1rem' : '1.1rem',
-                      padding: window.innerWidth < 500 ? '0.7em 1em' : '0.7em 1.5em',
+                      fontSize: isNarrow ? '1rem' : '1.1rem',
+                      padding: isNarrow ? '0.7em 1em' : '0.7em 1.5em',
                       borderRadius: '8px',
                       border: 'none',
                       cursor: 'pointer',
