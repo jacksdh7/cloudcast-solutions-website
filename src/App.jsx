@@ -192,7 +192,7 @@ function App() {
                     overflow: 'hidden'
                   }}>
                     <img
-                      src="/cloudcast-solutions-website/Downtown_Tulsa_Panoramic.jpg"
+                      src="/Downtown_Tulsa_Panoramic.jpg"
                       alt="Tulsa skyline"
                       style={{
                         width: '100%',
@@ -221,7 +221,7 @@ function App() {
                     overflow: 'hidden'
                   }}>
                     <img
-                      src="/cloudcast-solutions-website/Downtown_Tulsa_Panoramic.jpg"
+                      src="/Downtown_Tulsa_Panoramic.jpg"
                       alt="Tulsa skyline"
                       style={{
                         width: '100%',

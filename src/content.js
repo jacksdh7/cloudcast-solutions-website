@@ -1,8 +1,6 @@
 const content = {
     name: "Cloudcast Solutions & Consulting",
     tagline: "App Architecture | Cyber Security | MVP | Technical Advisory",
-    portraitAlt: "Portrait",
-    portraitSrc: "/cloudcast-solutions-website/headshot.jpg",
     tabs: [
         { label: "Home", value: "home" },
         { label: "Case Studies", value: "projects" },
@@ -42,7 +40,7 @@ const content = {
         lable5: "Outcome: ",
         projects: [
             {
-                image: "/cloudcast-solutions-website/dukapaq_logo.webp",
+                image: "/dukapaq_logo.webp",
                 title: "Technical Advisory for a Fintech Startup",
                 text1: "DUKAPAQ (Kenya & U.S.)",
                 text2: 'Fintech / Startups',
@@ -51,7 +49,7 @@ const content = {
                 text5: "Helped the team successfully relaunch their mobile POS app and improved long-term maintainability. Delivered custom POS hardware solution for internal use and resale.",
             },
             {
-                image: "/cloudcast-solutions-website/Inside_Rx.jpeg",
+                image: "/Inside_Rx.jpeg",
                 title: "Mobile Prescription Drug Pricing Platform",
                 text1: "Inside Rx",
                 text2: 'Healthcare & Pharmaceutical',
@@ -60,7 +58,7 @@ const content = {
                 text5: "Maintained and enhanced the app post-launch, streamlining prescription price transparency for thousands of users.",
             },
             {
-                image: "/cloudcast-solutions-website/kingsley_hird_logo.png",
+                image: "/kingsley_hird_logo.png",
                 title: "Digital Evidence Recovery for Civil Litigation",
                 text1: "Kingsley & Hird Law Firm",
                 text2: 'Legal / Digital Forensics',
@@ -70,7 +68,7 @@ const content = {
                 text5: "Recovered requested data and maintained data formating and readability. The firm was able to admit the evidence in court, thanks to the validation protocols we provided.",
             },
             {
-                image: "/cloudcast-solutions-website/Express_Scripts.png",
+                image: "/Express_Scripts.png",
                 title: "Pharmacy-to-Door Mobile App",
                 text1: "Express Scripts",
                 text2: 'Healthcare & Pharmaceutical',
@@ -88,7 +86,7 @@ const content = {
                 text5: "Delivered a fully encrypted, anonymous communications platform suitable for high-risk user scenarios and hostile networks that functions across the globe.",
             },
             {
-                image: "/cloudcast-solutions-website/DAS_Logo03.png",
+                image: "/DAS_Logo03.png",
                 title: "Digital Audio Processing on Embedded Hardware",
                 text1: "Digital Audio Solutions",
                 text2: 'Embedded Systems / Audio Engineering / Home Audio Products',
@@ -97,7 +95,7 @@ const content = {
                 text5: "Completed a working MVP capable of high-quality digital audio processing on a constrained device and within budget.",
             },
             {
-                image: "/cloudcast-solutions-website/nswc_logo.png",
+                image: "/nswc_logo.png",
                 title: "Encrypted Mobile Communications for the U.S. Department of Defense",
                 text1: "U.S.Naval Surface Warfare Center",
                 text2: 'Defense & Government',
@@ -127,35 +125,35 @@ const content = {
         items: [
             {
                 name: "",
-                logo: "kingsley_hird_logo.png"
+                logo: "/kingsley_hird_logo.png"
             },
             {
                 name: "DUKAPAQ",
-                logo: "/cloudcast-solutions-website/dukapaq_logo.webp"
+                logo: "/dukapaq_logo.webp"
             },
             {
                 name: "",
-                logo: "/cloudcast-solutions-website/Inside_Rx.jpeg"
+                logo: "/Inside_Rx.jpeg"
             },
             {
                 name: "Express Scripts",
-                logo: "/cloudcast-solutions-website/Express_Scripts.png"
+                logo: "/Express_Scripts.png"
             },
             {
                 name: "",
-                logo: "/cloudcast-solutions-website/DAS_Logo03.png"
+                logo: "/DAS_Logo03.png"
             },
             {
                 name: "",
-                logo: "/cloudcast-solutions-website/nswc_logo.png"
+                logo: "/nswc_logo.png"
             },
             {
                 name: "",
-                logo: "/cloudcast-solutions-website/secret_service_logo.png"
+                logo: "/secret_service_logo.png"
             },
             {
                 name: "",
-                logo: "/cloudcast-solutions-website/tpd_logo.png"
+                logo: "/tpd_logo.png"
             },
         ]
     },
