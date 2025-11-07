@@ -60,6 +60,9 @@ function App() {
 
   // NAV_HEIGHT controls the fixed nav height and the top offset of the main content.
   const NAV_HEIGHT = 56;
+  const logoShift = NAV_HEIGHT / 4;
+  // double the rendered logo size (keeps nav height unchanged)
+  const LOGO_HEIGHT = (NAV_HEIGHT - 12) * 2;
 
   return (
     <div
@@ -94,6 +97,20 @@ function App() {
           justifyContent: 'center'
         }}
       >
+        {/* logo anchored to the left edge of the nav (absolute - does not affect layout) */}
+        <img
+          src="/JAH_Jacksons_JacksonBlueVariant_617f8d.svg"
+          alt="Cloudcast Solutions logo"
+          style={{
+            position: 'absolute',
+            left: '1rem',
+            top: '50%',
+            transform: `translateY(calc(-50% - ${logoShift}px))`, // moved up by configured shift
+            height: `${LOGO_HEIGHT}px`,
+            width: 'auto',
+            pointerEvents: 'none'
+          }}
+        />
         {isMobile ? (
           <>
             <button
